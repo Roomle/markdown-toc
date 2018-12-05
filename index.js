@@ -89,10 +89,14 @@ function generate(options) {
             }
           }
 
-          if (!seen.hasOwnProperty(val)) {
-            seen[val] = 0;
-          } else {
-            seen[val]++;
+          try {
+            if (!seen.hasOwnProperty(val)) {
+              seen[val] = 0;
+            } else {
+              seen[val]++;
+            }
+          } catch (e) {
+            console.warn(e);
           }
 
           tok.seen = opts.num = seen[val];
